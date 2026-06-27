@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Daniel Domínguez Fragoso — Ingeniero de Telecomunicaciones</title>
+<meta name="description" content="Portafolio — sistemas embebidos, infraestructura de IA y desarrollo web." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --ink:      #0a0e17;
+    --ink-2:    #0e131f;
+    --ink-3:    #151c2c;
+    --line:     rgba(255,255,255,0.08);
+    --line-2:   rgba(255,255,255,0.14);
+    --txt:      #e9eef7;
+    --txt-dim:  #8c98ae;
+    --amber:    #ff9d4d;
+    --cyan:     #3fe0cf;
+    --maxw:     1140px;
+    --ease:     cubic-bezier(.2,.7,.2,1);
+    --font-d:   "Space Grotesk", system-ui, sans-serif;
+    --font-b:   "Inter", system-ui, sans-serif;
+    --font-m:   "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 84px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--ink);
+    color: var(--txt);
+    font-family: var(--font-b);
+    line-height: 1.6;
+    font-size: 16px;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--amber); color: var(--ink); }
+
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  /* ---------- language toggle mechanism ---------- */
+  .lang-en { display: none; }
+  html[data-lang="en"] .lang-es { display: none; }
+  html[data-lang="en"] .lang-en { display: revert; }
+
+  /* ---------- placeholders (edit me) ---------- */
+  .ph {
+    color: var(--amber);
+    border-bottom: 1px dashed rgba(255,157,77,.5);
+    padding-bottom: 1px;
+  }
+
+  /* ---------- layout ---------- */
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  .section { padding: 104px 0; position: relative; }
+  .section + .section { padding-top: 0; }
+
+  .eyebrow {
+    font-family: var(--font-m);
+    font-size: 12.5px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    display: inline-flex;
+    align-items: center;
+    gap: .55em;
+    margin-bottom: 22px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 22px; height: 1px;
+    background: var(--amber);
+    opacity: .8;
+  }
+
+  h1, h2, h3 { font-family: var(--font-d); font-weight: 600; line-height: 1.08; letter-spacing: -0.02em; }
+
+  .sec-title { font-size: clamp(26px, 4vw, 40px); margin-bottom: 14px; }
+  .sec-lead { color: var(--txt-dim); max-width: 56ch; font-size: 17px; }
+
+  /* ---------- nav ---------- */
+  .nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    height: 68px;
+    display: flex; align-items: center;
+    background: rgba(10,14,23,.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s var(--ease), background .3s var(--ease);
+  }
+  .nav.scrolled { border-bottom-color: var(--line); }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+
+  .brand { display: flex; align-items: center; gap: 11px; font-family: var(--font-m); font-size: 14px; }
+  .brand-mark { color: var(--amber); display: inline-flex; }
+  .brand-mark svg { display: block; }
+  .brand-name { color: var(--txt); letter-spacing: .02em; }
+
+  .nav-links { display: flex; align-items: center; gap: 30px; }
+  .nav-links a {
+    font-family: var(--font-m); font-size: 13px;
+    color: var(--txt-dim); letter-spacing: .02em;
+    transition: color .2s var(--ease); position: relative;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible { color: var(--txt); }
+
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+
+  .lang-btn {
+    font-family: var(--font-m); font-size: 12.5px;
+    color: var(--txt-dim); background: transparent;
+    border: 1px solid var(--line-2); border-radius: 999px;
+    padding: 6px 12px; cursor: pointer; letter-spacing: .04em;
+    transition: border-color .2s var(--ease), color .2s var(--ease);
+  }
+  .lang-btn:hover, .lang-btn:focus-visible { color: var(--txt); border-color: var(--amber); }
+  .lang-btn b { color: var(--amber); font-weight: 600; }
+
+  .menu-btn {
+    display: none; background: transparent; border: 0; cursor: pointer;
+    width: 38px; height: 38px; padding: 8px;
+  }
+  .menu-btn span { display: block; height: 1.5px; background: var(--txt); margin: 4px 0; transition: .25s var(--ease); }
+
+  /* ---------- buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: var(--font-m); font-size: 14px; letter-spacing: .01em;
+    padding: 13px 22px; border-radius: 10px;
+    cursor: pointer; border: 1px solid transparent;
+    transition: transform .2s var(--ease), box-shadow .25s var(--ease), background .2s var(--ease), border-color .2s var(--ease);
+  }
+  .btn svg { width: 15px; height: 15px; }
+  .btn-primary {
+    background: var(--amber); color: var(--ink); font-weight: 600;
+    box-shadow: 0 0 0 0 rgba(255,157,77,.45);
+  }
+  .btn-primary:hover, .btn-primary:focus-visible { transform: translateY(-2px); box-shadow: 0 10px 30px -8px rgba(255,157,77,.55); }
+  .btn-ghost { border-color: var(--line-2); color: var(--txt); }
+  .btn-ghost:hover, .btn-ghost:focus-visible { border-color: var(--cyan); color: var(--cyan); transform: translateY(-2px); }
+
+  /* ---------- hero ---------- */
+  .hero { min-height: 100svh; display: flex; align-items: center; position: relative; padding-top: 68px; overflow: hidden; }
+  .hero-glow {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(50% 55% at 12% 18%, rgba(255,157,77,.16), transparent 70%),
+      radial-gradient(45% 50% at 92% 88%, rgba(63,224,207,.14), transparent 70%);
+  }
+  #wave { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; opacity: .55; pointer-events: none; }
+  .hero .wrap { position: relative; z-index: 2; }
+
+  .hero-role { /* eyebrow already styled */ }
+  .hero h1 {
+    font-size: clamp(38px, 7.4vw, 82px);
+    font-weight: 700;
+    max-width: 16ch;
+    margin: 6px 0 26px;
+  }
+  .hero h1 .grad {
+    background: linear-gradient(100deg, var(--amber), var(--cyan));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero-sub { font-size: clamp(16px, 2.2vw, 20px); color: var(--txt-dim); max-width: 50ch; margin-bottom: 16px; }
+  .signature { font-family: var(--font-m); font-size: 14px; color: var(--txt); margin-bottom: 38px; }
+  .signature::before { content: "— "; color: var(--cyan); }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; }
+
+  .scroll-hint {
+    position: absolute; left: 24px; bottom: 26px; z-index: 2;
+    font-family: var(--font-m); font-size: 11px; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--txt-dim);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .scroll-hint .bar { width: 1px; height: 30px; background: linear-gradient(var(--amber), transparent); animation: drop 1.8s var(--ease) infinite; }
+  @keyframes drop { 0%{transform:scaleY(0);transform-origin:top} 45%{transform:scaleY(1);transform-origin:top} 55%{transform:scaleY(1);transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
+
+  /* ---------- about ---------- */
+  .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: start; }
+  .about-body p { color: var(--txt-dim); font-size: 18px; max-width: 50ch; }
+  .about-body p + p { margin-top: 18px; }
+  .about-body strong { color: var(--txt); font-weight: 600; }
+
+  .spec {
+    border: 1px solid var(--line); border-radius: 14px;
+    background: linear-gradient(180deg, var(--ink-2), var(--ink));
+    padding: 8px 22px;
+  }
+  .spec-row { display: flex; justify-content: space-between; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--line); font-family: var(--font-m); font-size: 13.5px; }
+  .spec-row:last-child { border-bottom: 0; }
+  .spec-k { color: var(--txt-dim); letter-spacing: .03em; }
+  .spec-v { color: var(--txt); text-align: right; }
+  .spec-v .dot { color: var(--cyan); }
+
+  /* ---------- stack ---------- */
+  .stack-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 8px; }
+  .stack-group h3 { font-family: var(--font-m); font-size: 13px; font-weight: 500; letter-spacing: .04em; color: var(--cyan); margin-bottom: 16px; text-transform: lowercase; }
+  .stack-group h3::before { content: "// "; color: var(--txt-dim); }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip {
+    font-family: var(--font-m); font-size: 13px; color: var(--txt);
+    border: 1px solid var(--line-2); border-radius: 8px; padding: 8px 13px;
+    background: var(--ink-2);
+    transition: border-color .2s var(--ease), color .2s var(--ease), transform .2s var(--ease);
+  }
+  .chip:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-2px); }
+
+  /* ---------- projects ---------- */
+  .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 12px; }
+  .card {
+    position: relative; border: 1px solid var(--line); border-radius: 16px;
+    background: var(--ink-2); padding: 28px; overflow: hidden;
+    display: flex; flex-direction: column; gap: 14px;
+    transition: transform .28s var(--ease), border-color .28s var(--ease), box-shadow .28s var(--ease);
+  }
+  .card::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 2px;
+    background: linear-gradient(90deg, var(--amber), var(--cyan));
+    transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease);
+  }
+  .card:hover { transform: translateY(-5px); border-color: var(--line-2); box-shadow: 0 22px 50px -26px rgba(0,0,0,.8); }
+  .card:hover::before { transform: scaleX(1); }
+  .card-meta { font-family: var(--font-m); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--amber); }
+  .card h3 { font-size: 22px; }
+  .card-desc { color: var(--txt-dim); font-size: 15.5px; }
+  .card-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px; }
+  .tag { font-family: var(--font-m); font-size: 11.5px; color: var(--txt-dim); border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px; }
+  .card-links { display: flex; gap: 18px; margin-top: auto; padding-top: 8px; }
+  .card-links a { font-family: var(--font-m); font-size: 13px; color: var(--cyan); display: inline-flex; align-items: center; gap: 6px; transition: gap .2s var(--ease), opacity .2s; }
+  .card-links a:hover { gap: 10px; }
+  .card-links a svg { width: 13px; height: 13px; }
+  .card-links .muted { color: var(--txt-dim); }
+
+  /* ---------- contact ---------- */
+  .contact { text-align: center; }
+  .contact .sec-lead { margin: 0 auto 30px; }
+  .contact-mail {
+    font-family: var(--font-d); font-weight: 500;
+    font-size: clamp(24px, 5vw, 46px); letter-spacing: -.02em;
+    display: inline-block; margin-bottom: 34px;
+    background: linear-gradient(100deg, var(--amber), var(--cyan));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    transition: opacity .2s;
+  }
+  .contact-mail:hover { opacity: .85; }
+  .socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+  .social {
+    font-family: var(--font-m); font-size: 13.5px; color: var(--txt);
+    border: 1px solid var(--line-2); border-radius: 10px; padding: 11px 18px;
+    display: inline-flex; align-items: center; gap: 9px;
+    transition: border-color .2s var(--ease), color .2s var(--ease), transform .2s var(--ease);
+  }
+  .social svg { width: 16px; height: 16px; }
+  .social:hover, .social:focus-visible { border-color: var(--cyan); color: var(--cyan); transform: translateY(-2px); }
+
+  /* ---------- recognition ---------- */
+  .award { display: flex; align-items: center; gap: 22px; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(110deg, rgba(255,157,77,.06), rgba(63,224,207,.05)); padding: 26px 28px; }
+  .award-mark { flex: none; width: 46px; height: 46px; color: var(--amber); display: grid; place-items: center; border: 1px solid var(--line-2); border-radius: 12px; }
+  .award-mark svg { width: 24px; height: 24px; }
+  .award-title { font-size: 19px; margin-bottom: 4px; }
+  .award-meta { font-family: var(--font-m); font-size: 13px; color: var(--txt-dim); letter-spacing: .02em; }
+  @media (max-width: 560px) { .award { flex-direction: column; align-items: flex-start; gap: 16px; } }
+
+  /* ---------- footer ---------- */
+  footer { border-top: 1px solid var(--line); padding: 34px 0; margin-top: 90px; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .foot-txt { font-family: var(--font-m); font-size: 12.5px; color: var(--txt-dim); }
+  .foot-txt b { color: var(--txt); font-weight: 500; }
+  .to-top { font-family: var(--font-m); font-size: 12.5px; color: var(--txt-dim); transition: color .2s; }
+  .to-top:hover { color: var(--amber); }
+
+  /* ---------- reveal animation ---------- */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+  .hero .reveal { transition-delay: var(--d, 0s); }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 860px) {
+    .about-grid { grid-template-columns: 1fr; gap: 36px; }
+    .stack-grid, .proj-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .menu-btn { display: block; }
+    .nav.open .nav-links {
+      display: flex; flex-direction: column; gap: 4px;
+      position: absolute; top: 68px; left: 0; right: 0;
+      background: rgba(10,14,23,.97); border-bottom: 1px solid var(--line);
+      padding: 14px 24px 22px; backdrop-filter: blur(14px);
+    }
+    .nav.open .nav-links a { padding: 10px 0; font-size: 15px; }
+    .section { padding: 80px 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+    .scroll-hint .bar { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Inicio">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="26" height="14" viewBox="0 0 26 14" fill="none">
+          <path d="M1 7 H5 L7 1 L11 13 L14 7 H18 L20 4 L22 10 L25 7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="brand-name">Daniel D. Fragoso</span>
+    </a>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#sobre-mi"><span class="lang-es">Sobre mí</span><span class="lang-en">About</span></a>
+      <a href="#stack"><span class="lang-es">Stack</span><span class="lang-en">Stack</span></a>
+      <a href="#proyectos"><span class="lang-es">Proyectos</span><span class="lang-en">Projects</span></a>
+      <a href="#contacto"><span class="lang-es">Contacto</span><span class="lang-en">Contact</span></a>
+    </div>
+
+    <div class="nav-right">
+      <button class="lang-btn" id="langBtn" aria-label="Cambiar idioma">
+        <span class="lang-es"><b>ES</b> / EN</span>
+        <span class="lang-en">ES / <b>EN</b></span>
+      </button>
+      <button class="menu-btn" id="menuBtn" aria-label="Menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <canvas id="wave" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <p class="eyebrow reveal" style="--d:.05s">
+      <span class="lang-es">Ingeniero de Telecomunicaciones</span>
+      <span class="lang-en">Telecommunications Engineer</span>
+    </p>
+    <h1 class="reveal" style="--d:.12s">
+      <span class="lang-es">De la <span class="grad">señal</span> al <span class="grad">sistema</span>. Del prototipo al producto.</span>
+      <span class="lang-en">From <span class="grad">signal</span> to <span class="grad">system</span>. From prototype to product.</span>
+    </h1>
+    <p class="hero-sub reveal" style="--d:.2s">
+      <span class="lang-es">Construyo soluciones que cruzan hardware embebido, infraestructura de IA y la web.</span>
+      <span class="lang-en">I build solutions across embedded hardware, AI infrastructure and the web.</span>
+    </p>
+    <p class="signature reveal" style="--d:.26s">Daniel Domínguez Fragoso</p>
+    <div class="hero-cta reveal" style="--d:.32s">
+      <a class="btn btn-primary" href="#proyectos">
+        <span class="lang-es">Ver proyectos</span><span class="lang-en">View projects</span>
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#contacto">
+        <span class="lang-es">Hablemos</span><span class="lang-en">Get in touch</span>
+      </a>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">
+    <span class="bar"></span>
+    <span class="lang-es">desplázate</span><span class="lang-en">scroll</span>
+  </div>
+</header>
+
+<main>
+<!-- ============ ABOUT ============ -->
+<section class="section" id="sobre-mi">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="lang-es">Sobre mí</span><span class="lang-en">About me</span></p>
+    <div class="about-grid">
+      <div class="about-body reveal">
+        <p>
+          <span class="lang-es">Ingeniero de telecomunicaciones que trabaja en la intersección de <strong>sistemas embebidos</strong>, <strong>infraestructura de IA</strong> y <strong>desarrollo web</strong>.</span>
+          <span class="lang-en">Telecommunications engineer working at the intersection of <strong>embedded systems</strong>, <strong>AI infrastructure</strong> and <strong>web development</strong>.</span>
+        </p>
+        <p>
+          <span class="lang-es">Me gusta llevar una idea desde el hardware hasta el producto final: diseñar la interfaz de un equipo, desplegar un modelo en hardware limitado o montar la infraestructura que sostiene un servicio. Resuelvo con recursos reales y restricciones reales.</span>
+          <span class="lang-en">I like taking an idea from the hardware all the way to the finished product: designing a device's interface, deploying a model on constrained hardware, or building the infrastructure behind a service. I solve with real resources and real constraints.</span>
+        </p>
+      </div>
+      <div class="spec reveal" aria-label="Ficha técnica">
+        <div class="spec-row"><span class="spec-k">Rol / Role</span><span class="spec-v"><span class="lang-es">Ing. Telecomunicaciones</span><span class="lang-en">Telecom Engineer</span></span></div>
+        <div class="spec-row"><span class="spec-k">Enfoque / Focus</span><span class="spec-v">Embedded <span class="dot">·</span> IA <span class="dot">·</span> Web</span></div>
+        <div class="spec-row"><span class="spec-k">Estado / Status</span><span class="spec-v"><span class="lang-es">Abierto a proyectos</span><span class="lang-en">Open to projects</span></span></div>
+        <div class="spec-row"><span class="spec-k">Idiomas / Lang</span><span class="spec-v">ES <span class="dot">·</span> EN</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STACK ============ -->
+<section class="section" id="stack">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="lang-es">Herramientas</span><span class="lang-en">Toolbox</span></p>
+    <h2 class="sec-title reveal"><span class="lang-es">Stack técnico</span><span class="lang-en">Technical stack</span></h2>
+    <div class="stack-grid">
+      <div class="stack-group reveal">
+        <h3>embedded</h3>
+        <div class="chips">
+          <span class="chip">ESP32</span><span class="chip">LVGL</span><span class="chip">C / C++</span><span class="chip">EEZ Studio</span><span class="chip">Touch / Sensores</span>
+        </div>
+      </div>
+      <div class="stack-group reveal">
+        <h3>ia + datos</h3>
+        <div class="chips">
+          <span class="chip">LLMs</span><span class="chip">Ollama</span><span class="chip">Python</span><span class="chip">Agentes</span><span class="chip">Automatización</span>
+        </div>
+      </div>
+      <div class="stack-group reveal">
+        <h3>web + infra</h3>
+        <div class="chips">
+          <span class="chip">Docker</span><span class="chip">Nginx</span><span class="chip">Linux</span><span class="chip">VPS</span><span class="chip">SSL</span><span class="chip">DNS / Dominios</span>
+        </div>
+      </div>
+      <div class="stack-group reveal">
+        <h3>herramientas</h3>
+        <div class="chips">
+          <span class="chip">Git</span><span class="chip">Flutter</span><span class="chip">WeasyPrint</span><span class="chip">Markdown</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="section" id="proyectos">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="lang-es">Trabajo seleccionado</span><span class="lang-en">Selected work</span></p>
+    <h2 class="sec-title reveal"><span class="lang-es">Proyectos</span><span class="lang-en">Projects</span></h2>
+    <p class="sec-lead reveal"><span class="lang-es">Una muestra de lo que he construido — del firmware a la infraestructura.</span><span class="lang-en">A sample of what I've built — from firmware to infrastructure.</span></p>
+
+    <div class="proj-grid">
+      <!-- P1 -->
+      <article class="card reveal">
+        <span class="card-meta">embedded</span>
+        <h3><span class="lang-es">Interfaz para equipo médico láser</span><span class="lang-en">Medical laser device UI</span></h3>
+        <p class="card-desc">
+          <span class="lang-es">Interfaz de usuario para un equipo médico láser sobre microcontrolador ESP32 con pantalla táctil capacitiva. Diseño de 5 pantallas y flujo de navegación, más una app móvil complementaria para control por WiFi.</span>
+          <span class="lang-en">User interface for a medical laser device on an ESP32 microcontroller with capacitive touchscreen. Five-screen design and navigation flow, plus a companion mobile app for WiFi control.</span>
+        </p>
+        <div class="card-tech"><span class="tag">ESP32</span><span class="tag">LVGL</span><span class="tag">C / C++</span><span class="tag">Flutter</span><span class="tag">IoT</span></div>
+        <div class="card-links">
+          <a href="#" target="_blank" rel="noopener"><span class="lang-es">Caso</span><span class="lang-en">Case</span><svg viewBox="0 0 16 16" fill="none"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+
+      <!-- P2 -->
+      <article class="card reveal">
+        <span class="card-meta">ai infra</span>
+        <h3><span class="lang-es">Agentes de IA self-hosted</span><span class="lang-en">Self-hosted AI agents</span></h3>
+        <p class="card-desc">
+          <span class="lang-es">Despliegue de modelos de lenguaje locales y agentes autónomos sobre hardware de recursos limitados (CPU). Integración por Telegram y un pipeline de investigación automatizada.</span>
+          <span class="lang-en">Deployment of local language models and autonomous agents on resource-constrained (CPU-only) hardware. Telegram integration and an automated research pipeline.</span>
+        </p>
+        <div class="card-tech"><span class="tag">LLMs</span><span class="tag">Ollama</span><span class="tag">Python</span><span class="tag">Linux</span><span class="tag">Docker</span></div>
+        <div class="card-links">
+          <a href="#" target="_blank" rel="noopener"><span class="lang-es">Caso</span><span class="lang-en">Case</span><svg viewBox="0 0 16 16" fill="none"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+
+      <!-- P3 -->
+      <article class="card reveal">
+        <span class="card-meta">automation</span>
+        <h3><span class="lang-es">Automatización de documentos</span><span class="lang-en">Document automation</span></h3>
+        <p class="card-desc">
+          <span class="lang-es">Generación programática de documentos profesionales: guías interactivas, PDFs con marcadores, diagramas SVG y tipografía cuidada. Parsing de datos desde fuentes como JSON.</span>
+          <span class="lang-en">Programmatic generation of professional documents: interactive guides, bookmarked PDFs, SVG diagrams and refined typography. Data parsing from sources like JSON.</span>
+        </p>
+        <div class="card-tech"><span class="tag">Python</span><span class="tag">WeasyPrint</span><span class="tag">SVG</span><span class="tag">Data</span></div>
+        <div class="card-links">
+          <a href="#" target="_blank" rel="noopener"><span class="lang-es">Repo</span><span class="lang-en">Repo</span><svg viewBox="0 0 16 16" fill="none"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+
+      <!-- P4 -->
+      <article class="card reveal">
+        <span class="card-meta">web + infra</span>
+        <h3><span class="lang-es">Web y hosting gestionado</span><span class="lang-en">Web & managed hosting</span></h3>
+        <p class="card-desc">
+          <span class="lang-es">Diseño y operación de infraestructura web de extremo a extremo: servidores VPS, contenedores Docker, certificados SSL y gestión de dominios. Soluciones llave en mano para clientes.</span>
+          <span class="lang-en">End-to-end web infrastructure design and operations: VPS servers, Docker containers, SSL certificates and domain management. Turnkey solutions for clients.</span>
+        </p>
+        <div class="card-tech"><span class="tag">Docker</span><span class="tag">Nginx</span><span class="tag">VPS</span><span class="tag">SSL</span><span class="tag">DevOps</span></div>
+        <div class="card-links">
+          <a href="#" target="_blank" rel="noopener"><span class="lang-es">Servicio</span><span class="lang-en">Service</span><svg viewBox="0 0 16 16" fill="none"><path d="M5 11 11 5M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+
+      <!-- P5 -->
+      <article class="card reveal">
+        <span class="card-meta">marketing</span>
+        <h3><span class="lang-es">Consultoría de marketing digital</span><span class="lang-en">Digital marketing consulting</span></h3>
+        <p class="card-desc">
+          <span class="lang-es">Estrategia y producción de contenido para agencias: calendarios editoriales, materiales formativos y sistemas de documentación.</span>
+          <span class="lang-en">Strategy and content production for agencies: editorial calendars, training materials and documentation systems.</span>
+        </p>
+        <div class="card-tech"><span class="tag">Estrategia</span><span class="tag">Contenido</span><span class="tag">Docs</span></div>
+        <div class="card-links">
+          <span class="muted lang-es">Bajo NDA</span><span class="muted lang-en">Under NDA</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECOGNITION ============ -->
+<section class="section" id="reconocimientos">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="lang-es">Reconocimientos</span><span class="lang-en">Recognition</span></p>
+    <div class="award reveal">
+      <div class="award-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" stroke="currentColor" stroke-width="1.6"/><path d="M9 14l-2 7 5-3 5 3-2-7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      </div>
+      <div>
+        <h3 class="award-title">
+          <span class="lang-es">Nominado — Taller de Instrumentación Nuclear del OIEA</span>
+          <span class="lang-en">Nominee — IAEA Nuclear Instrumentation Workshop</span>
+        </h3>
+        <p class="award-meta">Seibersdorf, Austria · 2026 · IAEA / OIEA</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section contact" id="contacto">
+  <div class="wrap">
+    <p class="eyebrow reveal" style="justify-content:center"><span class="lang-es">Contacto</span><span class="lang-en">Contact</span></p>
+    <h2 class="sec-title reveal"><span class="lang-es">¿Construimos algo?</span><span class="lang-en">Let's build something</span></h2>
+    <p class="sec-lead reveal"><span class="lang-es">Disponible para proyectos, colaboraciones y oportunidades.</span><span class="lang-en">Open to projects, collaborations and opportunities.</span></p>
+    <a class="contact-mail reveal" href="mailto:dominguez.fragoso.001@gmail.com">dominguez.fragoso.001@gmail.com</a>
+    <div class="socials reveal">
+      <a class="social" href="https://github.com/Fragol-01" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        GitHub
+      </a>
+      <a class="social" href="https://www.linkedin.com/in/daniel-dom%C3%ADnguez-fragoso-4093293a4/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3.6 2A1.6 1.6 0 1 0 3.6 5.2 1.6 1.6 0 0 0 3.6 2ZM2.3 6.4h2.6V14H2.3V6.4Zm4.3 0h2.49v1.04h.04c.35-.66 1.2-1.36 2.47-1.36 2.64 0 3.13 1.74 3.13 4v4.32h-2.6v-3.83c0-.91-.02-2.09-1.27-2.09-1.27 0-1.47.99-1.47 2.02V14H6.6V6.4Z"/></svg>
+        LinkedIn
+      </a>
+      <a class="social" href="mailto:dominguez.fragoso.001@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 16 16" fill="none"><rect x="1.5" y="3" width="13" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M2 4l6 4.5L14 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        Email
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <span class="foot-txt"><b>Daniel Domínguez Fragoso</b> · <span class="lang-es">Construido a mano con código</span><span class="lang-en">Hand-built with code</span> · <span id="year"></span></span>
+    <a class="to-top" href="#top">↑ <span class="lang-es">Volver arriba</span><span class="lang-en">Back to top</span></a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var docEl = document.documentElement;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ----- year ----- */
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* ----- language toggle ----- */
+  var langBtn = document.getElementById("langBtn");
+  langBtn.addEventListener("click", function () {
+    var next = docEl.getAttribute("data-lang") === "en" ? "es" : "en";
+    docEl.setAttribute("data-lang", next);
+    docEl.setAttribute("lang", next);
+  });
+
+  /* ----- mobile menu ----- */
+  var nav = document.getElementById("nav");
+  var menuBtn = document.getElementById("menuBtn");
+  menuBtn.addEventListener("click", function () {
+    var open = nav.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  document.getElementById("navLinks").addEventListener("click", function (e) {
+    if (e.target.closest("a")) { nav.classList.remove("open"); menuBtn.setAttribute("aria-expanded", "false"); }
+  });
+
+  /* ----- nav border on scroll ----- */
+  var onScroll = function () { nav.classList.toggle("scrolled", window.scrollY > 12); };
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  /* ----- scroll reveal ----- */
+  var reveals = document.querySelectorAll(".reveal");
+  if (reduce || !("IntersectionObserver" in window)) {
+    reveals.forEach(function (el) { el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    reveals.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ----- hero signal waveform (canvas) ----- */
+  var canvas = document.getElementById("wave");
+  var ctx = canvas.getContext("2d");
+  var w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), t = 0, raf;
+
+  function resize() {
+    var r = canvas.getBoundingClientRect();
+    w = r.width; h = r.height;
+    canvas.width = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function line(offset, amp, freq, speed, alpha) {
+    var grad = ctx.createLinearGradient(0, 0, w, 0);
+    grad.addColorStop(0, "rgba(255,157,77," + alpha + ")");
+    grad.addColorStop(1, "rgba(63,224,207," + alpha + ")");
+    ctx.beginPath();
+    var mid = h * 0.62 + offset;
+    for (var x = 0; x <= w; x += 6) {
+      var y = mid
+        + Math.sin(x * freq + t * speed) * amp
+        + Math.sin(x * freq * 2.3 + t * speed * 1.4) * (amp * 0.35);
+      x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = 1.4;
+    ctx.shadowColor = "rgba(63,224,207,0.5)";
+    ctx.shadowBlur = 10;
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    line(0, 26, 0.011, 0.9, 0.55);
+    line(40, 16, 0.017, -0.7, 0.30);
+    line(-46, 12, 0.022, 1.3, 0.22);
+    t += 0.016;
+    raf = requestAnimationFrame(draw);
+  }
+
+  resize();
+  if (reduce) {
+    draw(); cancelAnimationFrame(raf); // single static frame
+  } else {
+    draw();
+  }
+  var rt;
+  window.addEventListener("resize", function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { resize(); if (reduce) { draw(); cancelAnimationFrame(raf); } }, 150);
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>
