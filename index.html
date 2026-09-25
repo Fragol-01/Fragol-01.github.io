@@ -2,70 +2,229 @@
 <html lang="es" class="dark">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ============ ICONOS ============ -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-title" content="Daniel Domínguez" />
+    <meta name="application-name" content="Daniel Domínguez Fragoso" />
+    <meta name="format-detection" content="telephone=no" />
 
-    <title>Daniel Domínguez Fragoso — Ingeniero Electrónico y de Telecomunicaciones</title>
+    <!-- ============ TITLE + DESCRIPTION ============ -->
+    <title>Daniel Domínguez Fragoso | Ingeniero Electrónico y de Telecomunicaciones — PCB, Firmware ESP32 e IA</title>
+
     <meta
       name="description"
-      content="Ingeniero electrónico y de telecomunicaciones. Diseño de electrónica y PCB, firmware embebido (ESP32, C++) y dispositivos médicos. Construyo productos y software con IA."
+      content="Portafolio de Daniel Domínguez Fragoso, ingeniero electrónico y de telecomunicaciones en La Habana. Diseño de PCB, firmware embebido (ESP32, C++), dispositivos médicos y software con IA. Mira sus proyectos."
     />
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="author" content="Daniel Domínguez Fragoso" />
+    <meta
+      name="keywords"
+      content="Daniel Domínguez Fragoso, ingeniero electrónico, ingeniero de telecomunicaciones, diseño PCB, firmware embebido, ESP32, C++, dispositivos médicos, electrónica La Habana, Cuba, inteligencia artificial, portafolio ingeniería"
+    />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large" />
+    <meta name="bingbot" content="index, follow" />
     <link rel="canonical" href="https://danieldominguez.is-a.dev/" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
-    <meta property="og:type" content="website" />
+    <!-- ============ LOCALIZACIÓN / IDIOMA ============ -->
+    <meta name="language" content="Spanish" />
+    <meta name="geo.region" content="CU-03" />
+    <meta name="geo.placename" content="La Habana" />
+    <meta name="geo.position" content="23.113592;-82.366592" />
+    <meta name="ICBM" content="23.113592, -82.366592" />
+    <link rel="alternate" hreflang="es" href="https://danieldominguez.is-a.dev/" />
+    <link rel="alternate" hreflang="x-default" href="https://danieldominguez.is-a.dev/" />
+
+    <!-- ============ TEMA / UI ============ -->
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="color-scheme" content="dark light" />
+
+    <!-- ============ OPEN GRAPH (Facebook, WhatsApp, LinkedIn) ============ -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Daniel Domínguez Fragoso" />
+    <meta property="og:locale" content="es_CU" />
+    <meta property="og:locale:alternate" content="es_ES" />
     <meta property="og:url" content="https://danieldominguez.is-a.dev/" />
-    <meta property="og:title" content="Daniel Domínguez Fragoso — Ingeniero Electrónico y de Telecomunicaciones" />
+    <meta
+      property="og:title"
+      content="Daniel Domínguez Fragoso | Ingeniero Electrónico y de Telecomunicaciones"
+    />
     <meta
       property="og:description"
       content="Diseño de electrónica y PCB, firmware embebido (ESP32, C++) y dispositivos médicos. Construyo productos y software con IA."
     />
     <meta property="og:image" content="https://danieldominguez.is-a.dev/og.png" />
+    <meta property="og:image:secure_url" content="https://danieldominguez.is-a.dev/og.png" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://danieldominguez.is-a.dev/og.png" />
+    <meta
+      property="og:image:alt"
+      content="Daniel Domínguez Fragoso — Ingeniero Electrónico y de Telecomunicaciones especializado en PCB, firmware embebido e IA"
+    />
+    <meta property="profile:first_name" content="Daniel" />
+    <meta property="profile:last_name" content="Domínguez Fragoso" />
 
+    <!-- ============ TWITTER / X ============ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Daniel Domínguez Fragoso | Ingeniero Electrónico y de Telecomunicaciones" />
+    <meta
+      name="twitter:description"
+      content="Diseño de electrónica y PCB, firmware embebido (ESP32, C++) y dispositivos médicos. Construyo productos y software con IA."
+    />
+    <meta name="twitter:image" content="https://danieldominguez.is-a.dev/og.png" />
+    <meta
+      name="twitter:image:alt"
+      content="Daniel Domínguez Fragoso — Ingeniero Electrónico y de Telecomunicaciones"
+    />
+    <meta name="twitter:creator" content="@fragol_01" />
+    <meta name="twitter:site" content="@fragol_01" />
+
+    <!-- ============ RENDIMIENTO / RECURSOS ============ -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://static.cloudflareinsights.com" />
+    <link rel="preload" as="image" href="/daniel.webp" fetchpriority="high" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
 
+    <!-- ============ DATOS ESTRUCTURADOS ============ -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Daniel Domínguez Fragoso",
-        "jobTitle": "Ingeniero Electrónico y de Telecomunicaciones",
-        "url": "https://danieldominguez.is-a.dev/",
-        "image": "https://danieldominguez.is-a.dev/daniel.webp",
-        "email": "mailto:dominguez.fragoso.001@gmail.com",
-        "address": { "@type": "PostalAddress", "addressLocality": "La Habana", "addressCountry": "CU" },
-        "worksFor": { "@type": "Organization", "name": "CEADEN" },
-        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universidad Tecnológica de La Habana «CUJAE»" },
-        "knowsAbout": ["Electrónica", "PCB", "Firmware embebido", "ESP32", "Telecomunicaciones", "Inteligencia Artificial"],
-        "sameAs": [
-          "https://github.com/fragol-01",
-          "https://www.linkedin.com/in/daniel-dom%C3%ADnguez-fragoso-4093293a4/"
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://danieldominguez.is-a.dev/#person",
+            "name": "Daniel Domínguez Fragoso",
+            "givenName": "Daniel",
+            "familyName": "Domínguez Fragoso",
+            "jobTitle": "Ingeniero Electrónico y de Telecomunicaciones",
+            "description": "Ingeniero electrónico y de telecomunicaciones especializado en diseño de electrónica y PCB, firmware embebido (ESP32, C++), dispositivos médicos y desarrollo de productos y software con IA.",
+            "url": "https://danieldominguez.is-a.dev/",
+            "image": {
+              "@type": "ImageObject",
+              "url": "https://danieldominguez.is-a.dev/daniel.webp",
+              "width": 800,
+              "height": 800,
+              "caption": "Retrato de Daniel Domínguez Fragoso, ingeniero electrónico y de telecomunicaciones"
+            },
+            "email": "mailto:dominguez.fragoso.001@gmail.com",
+            "gender": "Male",
+            "nationality": { "@type": "Country", "name": "Cuba" },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "La Habana",
+              "addressRegion": "La Habana",
+              "addressCountry": "CU"
+            },
+            "worksFor": { "@type": "Organization", "name": "CEADEN" },
+            "alumniOf": {
+              "@type": "CollegeOrUniversity",
+              "name": "Universidad Tecnológica de La Habana «CUJAE»",
+              "url": "https://www.cujae.edu.cu/"
+            },
+            "knowsLanguage": [
+              { "@type": "Language", "name": "Español", "alternateName": "es" },
+              { "@type": "Language", "name": "Inglés", "alternateName": "en" }
+            ],
+            "knowsAbout": [
+              "Electrónica",
+              "Diseño de PCB",
+              "Firmware embebido",
+              "ESP32",
+              "C++",
+              "Telecomunicaciones",
+              "Dispositivos médicos",
+              "Inteligencia Artificial",
+              "Desarrollo de producto"
+            ],
+            "hasOccupation": {
+              "@type": "Occupation",
+              "name": "Ingeniero Electrónico y de Telecomunicaciones",
+              "occupationalCategory": "17-2072.00",
+              "skills": "Diseño de PCB, firmware embebido, ESP32, C++, telecomunicaciones, IA"
+            },
+            "sameAs": [
+              "https://github.com/fragol-01",
+              "https://www.linkedin.com/in/daniel-dom%C3%ADnguez-fragoso-4093293a4/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://danieldominguez.is-a.dev/#website",
+            "url": "https://danieldominguez.is-a.dev/",
+            "name": "Daniel Domínguez Fragoso — Portafolio",
+            "inLanguage": "es",
+            "publisher": { "@id": "https://danieldominguez.is-a.dev/#person" }
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://danieldominguez.is-a.dev/#profilepage",
+            "url": "https://danieldominguez.is-a.dev/",
+            "name": "Daniel Domínguez Fragoso — Ingeniero Electrónico y de Telecomunicaciones",
+            "description": "Portafolio de proyectos de electrónica, PCB, firmware embebido y software con IA.",
+            "inLanguage": "es",
+            "isPartOf": { "@id": "https://danieldominguez.is-a.dev/#website" },
+            "about": { "@id": "https://danieldominguez.is-a.dev/#person" },
+            "mainEntity": { "@id": "https://danieldominguez.is-a.dev/#person" },
+            "dateModified": "2025-01-01"
+          }
         ]
       }
     </script>
 
-    <!-- Cloudflare Web Analytics -->
+    <!-- ============ CLOUDFLARE WEB ANALYTICS ============ -->
     <script
       defer
       src="https://static.cloudflareinsights.com/beacon.min.js"
       data-cf-beacon='{"token": "e739adbff36a4851970d7079d62260e3"}'
     ></script>
-    <!-- End Cloudflare Web Analytics -->
+
     <script type="module" crossorigin src="/assets/index-DGWRyvR4.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-DNoXoQ1A.css">
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- ============ FALLBACK SIN JS (SEO + accesibilidad) ============ -->
+    <noscript>
+      <main>
+        <h1>Daniel Domínguez Fragoso — Ingeniero Electrónico y de Telecomunicaciones</h1>
+        <p>
+          Ingeniero electrónico y de telecomunicaciones en La Habana, Cuba. Diseño de electrónica y
+          PCB, firmware embebido con ESP32 y C++, dispositivos médicos y desarrollo de productos y
+          software con inteligencia artificial.
+        </p>
+        <h2>Áreas de especialidad</h2>
+        <ul>
+          <li>Diseño de electrónica y PCB</li>
+          <li>Firmware embebido (ESP32, C++)</li>
+          <li>Telecomunicaciones</li>
+          <li>Dispositivos médicos</li>
+          <li>Productos y software con IA</li>
+        </ul>
+        <h2>Contacto</h2>
+        <ul>
+          <li><a href="mailto:dominguez.fragoso.001@gmail.com">dominguez.fragoso.001@gmail.com</a></li>
+          <li><a href="https://github.com/fragol-01" rel="me noopener">GitHub</a></li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/daniel-dom%C3%ADnguez-fragoso-4093293a4/"
+              rel="me noopener"
+              >LinkedIn</a
+            >
+          </li>
+        </ul>
+        <p>Activa JavaScript para ver el portafolio completo con proyectos y demos interactivas.</p>
+      </main>
+    </noscript>
   </body>
 </html>
